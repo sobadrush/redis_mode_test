@@ -33,4 +33,6 @@ Temporary Items
 # iCloud generated files
 *.icloud
 
+**/*.rdb
+
 # End of https://www.toptal.com/developers/gitignore/api/macos
