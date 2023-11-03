@@ -16,4 +16,12 @@ echo "\n requirepass $REDIS_SENTINEL_PASSWORD" >> /etc/redis/sentinel/sentinel.c
 echo "\n sentinel auth-pass mymaster $REDIS_MASTER_PASSWORD" >> /etc/redis/sentinel/sentinel.conf && \
 apt update && apt install -y telnet
 
-ENTRYPOINT redis-sentinel /etc/redis/sentinel/sentinel.conf
+# Shell-Form
+# ENTRYPOINT redis-sentinel /etc/redis/sentinel/sentinel.conf
+
+# Exec-Form-1
+# ENTRYPOINT [ "redis-sentinel", "/etc/redis/sentinel/sentinel.conf" ]
+
+# Exec-Form-2
+# 使用 -c，entrypoint 才能使用到 shell 環境
+ENTRYPOINT [ "/bin/bash", "-c", "redis-sentinel /etc/redis/sentinel/sentinel.conf" ]
