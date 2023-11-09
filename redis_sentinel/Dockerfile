@@ -14,7 +14,7 @@ RUN sed -i 's/REDIS_SENTINEL_PORT/'$REDIS_SENTINEL_PORT'/g' /etc/redis/sentinel/
 sed -i 's/REDIS_MASTER_IP/'$REDIS_MASTER_IP'/g' /etc/redis/sentinel/sentinel.conf && \
 echo "\n requirepass $REDIS_SENTINEL_PASSWORD" >> /etc/redis/sentinel/sentinel.conf && \
 echo "\n sentinel auth-pass mymaster $REDIS_MASTER_PASSWORD" >> /etc/redis/sentinel/sentinel.conf && \
-apt update && apt install -y telnet
+apt update && apt install -y telnet && apt install -y vim
 
 # Shell-Form
 # ENTRYPOINT redis-sentinel /etc/redis/sentinel/sentinel.conf
