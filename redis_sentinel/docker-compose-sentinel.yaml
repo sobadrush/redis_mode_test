@@ -8,7 +8,9 @@ services:
             args: # 在 Dockerfile 中可使用 ARG 接收
                 - REDIS_SENTINEL_PORT=${env_redis_sentinel_1_port}
                 - REDIS_SENTINEL_PASSWORD=sa12345
+                - REDIS_MASTER_NAME=mymaster # 從 sentinel 端，對被監控端的主從模式 REDIS 命名
                 - REDIS_MASTER_IP=172.24.0.2 # 查詢要被監控的 REDIS_MASTER 容器 IP 後置換: docker inspect redis-master | grep "IPAddress"
+                - REDIS_MASTER_PORT=6379
                 - REDIS_MASTER_PASSWORD=sa123456
         volumes:
             - ./data/redis-sentinel1/data:/data
@@ -24,7 +26,9 @@ services:
             args: # 在 Dockerfile 中可使用 ARG 接收
                 - REDIS_SENTINEL_PORT=${env_redis_sentinel_2_port}
                 - REDIS_SENTINEL_PASSWORD=sa12345
+                - REDIS_MASTER_NAME=mymaster # 從 sentinel 端，對被監控端的主從模式 REDIS 命名
                 - REDIS_MASTER_IP=172.24.0.2 # 查詢要被監控的 REDIS_MASTER 容器 IP 後置換: docker inspect redis-master | grep "IPAddress"
+                - REDIS_MASTER_PORT=6379
                 - REDIS_MASTER_PASSWORD=sa123456
         volumes:
             - ./data/redis-sentinel2/data:/data
@@ -40,7 +44,9 @@ services:
             args: # 在 Dockerfile 中可使用 ARG 接收
                 - REDIS_SENTINEL_PORT=${env_redis_sentinel_3_port}
                 - REDIS_SENTINEL_PASSWORD=sa12345
+                - REDIS_MASTER_NAME=mymaster # 從 sentinel 端，對被監控端的主從模式 REDIS 命名
                 - REDIS_MASTER_IP=172.24.0.2 # 查詢要被監控的 REDIS_MASTER 容器 IP 後置換: docker inspect redis-master | grep "IPAddress"
+                - REDIS_MASTER_PORT=6379
                 - REDIS_MASTER_PASSWORD=sa123456
         volumes:
             - ./data/redis-sentinel3/data:/data
