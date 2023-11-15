@@ -1,0 +1,1 @@
+# 這是一個測試 Redis Sentinel 與 Master-replica 的專案
